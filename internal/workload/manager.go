@@ -233,6 +233,50 @@ func (w *WorkloadManager) RegisterObserver(observer Observer) {
 	w.workloads.RegisterObserver(observer)
 }
 
+func (w *WorkloadManager) RemoveAllWorkloads() error {
+	workloads, err := w.workloads.List()
+	if err != nil {
+		return err
+	}
+	for _, workload := range workloads {
+		log.Infof("Removing workload %s", workload.Name)
+		err := w.workloads.Remove(workload.Name)
+		if err != nil {
+			log.Errorf("Error removing workload %[1]s: %v", workload.Name, err)
+			return err
+		}
+	}
+	return nil
+}
+
+func (w *WorkloadManager) DeleteManifestsDir() error {
+	log.Infof("Deleting manifests directory")
+	err := os.RemoveAll(w.manifestsDir)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (w *WorkloadManager) DeleteVolumeDir() error {
+	err := os.RemoveAll(w.volumesDir)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (w *WorkloadManager) DeleteTable() error {
+	err := w.workloads.RemoveTable()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (w *WorkloadManager) toPod(workload *models.Workload) (*v1.Pod, error) {
 	podSpec := v1.PodSpec{}
 	err := yaml.Unmarshal([]byte(workload.Specification), &podSpec)

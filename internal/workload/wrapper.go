@@ -87,6 +87,15 @@ func (ww workloadWrapper) Remove(workloadName string) error {
 	return nil
 }
 
+func (ww workloadWrapper) RemoveTable() error {
+	log.Infof("Deleting table %s", nfTableName)
+	if err := ww.netfilter.DeleteTable(nfTableName); err != nil {
+		log.Errorf("failed to delete table %s: %v", nfTableName, err)
+		return err
+	}
+	return nil
+}
+
 func (ww workloadWrapper) Run(workload *v1.Pod, manifestPath string) error {
 	if err := ww.applyNetworkConfiguration(workload); err != nil {
 		return err

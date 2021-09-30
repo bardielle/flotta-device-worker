@@ -87,6 +87,26 @@ func (ww workloadWrapper) Remove(workloadName string) error {
 	return nil
 }
 
+func (ww workloadWrapper) RemovePermanently(workloadName string) error {
+	id := ww.mappingRepository.GetId(workloadName)
+	if id == "" {
+		id = workloadName
+	}
+	if err := ww.workloads.Remove(id); err != nil {
+		return err
+	}
+	if err := ww.netfilter.DeleteTable(nfTableName); err != nil {
+		log.Errorf("failed to delete chain %[1]s from %s table for workload %[1]s: %v", workloadName, nfTableName, err)
+	}
+	if err := ww.mappingRepository.Remove(workloadName); err != nil {
+		return err
+	}
+	for _, observer := range ww.observers {
+		observer.WorkloadRemoved(workloadName)
+	}
+	return nil
+}
+
 func (ww workloadWrapper) Run(workload *v1.Pod, manifestPath string) error {
 	if err := ww.applyNetworkConfiguration(workload); err != nil {
 		return err

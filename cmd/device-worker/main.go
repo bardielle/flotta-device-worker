@@ -12,7 +12,7 @@ import (
 	registration2 "github.com/jakub-dzon/k4e-device-worker/internal/registration"
 	"github.com/jakub-dzon/k4e-device-worker/internal/server"
 	workload2 "github.com/jakub-dzon/k4e-device-worker/internal/workload"
-	"github.com/prometheus/common/log"
+	
 
 	"net"
 	"os"
@@ -65,11 +65,6 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	// Create a worker client
-	workerClient := pb.NewWorkerClient(conn)
-	ctx, cancel = context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-
 	// Register as a handler of the "device" type.
 	r, err := dispatcherClient.Register(ctx, &pb.RegistrationRequest{Handler: "device", Pid: int64(os.Getpid())})
 	if err != nil {
@@ -110,7 +105,7 @@ func main() {
 	configManager.RegisterObserver(hbs)
 
 	//add observer for deregistration
-	dr, err := deregistration2.NewDeregistration(workerClient, configDir)
+	dr, err := deregistration2.NewDeregistration(wl, configManager)
 	if err != nil {
 		log.Fatal(err)
 	}

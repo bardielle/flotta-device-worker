@@ -27,7 +27,6 @@ func (d *Deregistration) Update(configuration models.DeviceConfigurationMessage)
 		return err
 	}
 
-	// after removing all the workloads the manifets directory can be removed
 	err = d.workloads.DeleteManifestsDir()
 	if err != nil {
 		log.Errorf("failed to delete manifests directory: %v", err)

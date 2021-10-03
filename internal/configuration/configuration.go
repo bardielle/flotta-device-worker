@@ -125,7 +125,6 @@ func (m *Manager) IsInitialConfig() bool {
 func (m *Manager) DeleteDeviceConfig() error {
 	log.Infof("Removing device config file: %s", m.deviceConfigFile)
 	err := os.Remove(m.deviceConfigFile)
-
 	if err != nil {
 		log.Error(err)
 	}

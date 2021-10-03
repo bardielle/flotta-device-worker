@@ -159,8 +159,8 @@ github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/
 github.com/aws/aws-sdk-go v1.35.28 h1:S2LuRnfC8X05zgZLC8gy/Sb82TGv2Cpytzbzz7tkeHc=
 github.com/aws/aws-sdk-go v1.35.28/go.mod h1:tlPOdRjfxPBpNIwqDj61rmsnA85v9jc0Ps9+muhnW+k=
 github.com/aws/aws-sdk-go-v2 v0.18.0/go.mod h1:JWVYvqSMppoMJC0x5wdwiImzgXTI9FuZwxzkQq9wy+g=
-github.com/bardielle/yggdrasil v0.0.0-20210930111211-aa76ec6b4052 h1:ZUp5LHKTUF65SF8kNHi3B5O9gHRn/0LAYxI6MYilFps=
-github.com/bardielle/yggdrasil v0.0.0-20210930111211-aa76ec6b4052/go.mod h1:tH7J+FiCyzrZvjI4Hn/hRf5s1m5xFxUXqKQwY1tA9lA=
+github.com/bardielle/yggdrasil v0.0.0-20211003074648-09f8069694cd h1:uikiGTP1Tc1AX8WovZ71/HsD7Xw0mzjmfPUfGPKDIrk=
+github.com/bardielle/yggdrasil v0.0.0-20211003074648-09f8069694cd/go.mod h1:tH7J+FiCyzrZvjI4Hn/hRf5s1m5xFxUXqKQwY1tA9lA=
 github.com/beorn7/perks v0.0.0-20160804104726-4c0e84591b9a/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
 github.com/beorn7/perks v1.0.0/go.mod h1:KWe93zE9D1o94FZ5RNwFwVgaQK1VOXiVxmqh+CedLV8=

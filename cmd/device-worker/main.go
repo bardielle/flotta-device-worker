@@ -12,7 +12,6 @@ import (
 	registration2 "github.com/jakub-dzon/k4e-device-worker/internal/registration"
 	"github.com/jakub-dzon/k4e-device-worker/internal/server"
 	workload2 "github.com/jakub-dzon/k4e-device-worker/internal/workload"
-	
 
 	"net"
 	"os"
@@ -115,7 +114,7 @@ func main() {
 	reg := registration2.NewRegistration(&hw, &deviceOs, dispatcherClient)
 
 	s := grpc.NewServer()
-	pb.RegisterWorkerServer(s, server.NewDeviceServer(configManager))
+	pb.RegisterWorkerServer(s, server.NewDeviceServer(configManager, dr))
 	if configManager.IsInitialConfig() {
 		err := reg.RegisterDevice()
 		if err != nil {

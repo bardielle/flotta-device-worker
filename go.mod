@@ -34,4 +34,4 @@ replace (
 
 )
 
-replace github.com/redhatinsights/yggdrasil => github.com/bardielle/yggdrasil v0.0.0-20210930111211-aa76ec6b4052
+replace github.com/redhatinsights/yggdrasil => github.com/bardielle/yggdrasil v0.0.0-20211003074648-09f8069694cd
